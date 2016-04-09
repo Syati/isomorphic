@@ -1,6 +1,7 @@
 import Express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
+import { ReduxRouter } from 'redux-router';
 import { Provider } from 'react-redux';
 
 import App from '../common/containers/App';
@@ -11,7 +12,7 @@ function renderFullPage(html, initialState) {
     <!doctype html>
     <html>
       <head>
-        <title>Redux Universal Example</title>
+        <title>Isomorphic App Sample</title>
         <link href="/static/styles.css" rel="stylesheet" type="text/css" />
       </head>
       <body>
@@ -26,9 +27,13 @@ function renderFullPage(html, initialState) {
 }
 
 function handleRender(req, res) {
+  const store = configureStore({});
+
   const html = renderToString(
-    <Provider>
-      <App />
+    <Provider store={store}>
+      <div>
+        <ReduxRouter />
+      </div>
     </Provider>
   );
   const initialState = {};

@@ -10,10 +10,14 @@ if ( process.env.BROWSER ) {
 
 class App extends React.Component {
   render() {
+    const { children } = this.props;
+
     return (
       <div>
         <Header />
-        <main>body</main>
+        <main className="main">
+          { children }
+        </main>
         <Footer />
       </div>
     );
