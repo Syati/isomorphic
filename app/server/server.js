@@ -12,6 +12,7 @@ function renderFullPage(html, initialState) {
     <html>
       <head>
         <title>Redux Universal Example</title>
+        <link href="/static/styles.css" rel="stylesheet" type="text/css" />
       </head>
       <body>
         <div id="app">${html}</div>
@@ -40,8 +41,8 @@ const settings = {
   port: process.env.PORT || 3000
 };
 
-app.use(handleRender);
 app.use('/static', Express.static(`${__dirname}/../public/assets/`));
+app.use(handleRender);
 
 app.listen(settings.port, (error) => {
   if (error) {
