@@ -24,8 +24,8 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.jsx?$/,
-      exculde: /node_modules/,
-      loader: 'babel'
+      exclude: [/node_modules/],
+      loader: 'babel-loader'
     }, {
       test: /\.less$/,
       loader: ExtractTextPlugin.extract("style-loader", "css!autoprefixer?browsers=last 2 version!less?outputStyle=expanded")
