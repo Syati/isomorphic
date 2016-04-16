@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app/server/index.js"
+    "start": "node app/server/index.js",
+    "deploy": "NODE_ENV=production webpack && NODE_ENV=production npm start",
+    "clean": "rm -rf app/public"
   },
   "author": "",
   "license": "ISC",
