@@ -1,10 +1,8 @@
-var Webpack_isomorphic_tools_plugin = require('webpack-isomorphic-tools/plugin');
 var fs = require('fs');
 var path = require('path');
 
 var webpack = require('webpack');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-
+var Webpack_isomorphic_tools_plugin = require('webpack-isomorphic-tools/plugin');
 var webpack_isomorphic_tools_configuration = require('./webpack-isomorphic-tools');
 var webpack_isomorphic_tools_plugin = new Webpack_isomorphic_tools_plugin(webpack_isomorphic_tools_configuration);
 webpack_isomorphic_tools_plugin.development();
