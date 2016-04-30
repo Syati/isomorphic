@@ -1,41 +1,34 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-
 import { ReduxRouter } from 'redux-router';
 import { Provider } from 'react-redux';
 import configureStore from '../common/store/configureStore';
-
-function renderFullPage(html, initialState) {
-  return `
-    <!doctype html>
-    <html>
-      <head>
-        <title>Isomorphic App Sample</title>
-        <link href="/static/styles.css" rel="stylesheet" type="text/css" />
-      </head>
-      <body>
-        <div id="app">${html}</div>
-        <script>
-          window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
-        </script>
-        <script src="/static/bundle.js"></script>
-      </body>
-    </html>
-    `
-}
+import Html from './Html';
 
 export default function handleRender(req, res) {
-  const store = configureStore({});
+  if (__DEVELOPMENT__) {
+    webpack_isomorphic_tools.refresh()
+  }
 
-  const html = renderToString(
+  const initialState = {};
+  const store = configureStore(initialState);
+  const component = renderToString(
     <Provider store={store}>
       <div>
         <ReduxRouter />
       </div>
     </Provider>
   );
-  const initialState = {};
-  res.send(renderFullPage(html, initialState));
+  const finalState = store.getState();
+
+  res.send(
+    '<!doctype html>\n' +
+    React.renderToString(
+      <Html assets={webpack_isomorphic_tools.assets()}
+            component={component}
+            initialState={finalState}/>
+    )
+  );
 }
 
 

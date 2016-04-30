@@ -2,7 +2,22 @@ import Express from 'express';
 import setup from './setup';
 import settings from './settings';
 
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import webpackConfig from '../../webpack.config';
+
 const app = new Express();
+
+if (__DEVELOPMENT__) {
+  const compiler = webpack(webpackConfig);
+  app.use(webpackDevMiddleware(compiler, {
+    noInfo: true,
+    reload: true,
+    publicPath: webpackConfig.output.publicPath
+  }));
+  app.use(webpackHotMiddleware(compiler));
+}
 
 setup(app);
 

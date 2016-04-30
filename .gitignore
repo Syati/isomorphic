@@ -1,4 +1,5 @@
 /app/public/
+/app/webpack-assets.json
 .tern-port
 
 ### https://raw.github.com/github/gitignore/0dbd791269e83d241dfd0a952f461d9a9302d518/Node.gitignore
