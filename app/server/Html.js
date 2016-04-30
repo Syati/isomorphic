@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react';
-import ReactDOM from 'react-dom/server';
 
 export default class Html extends Component {
   static propTypes = {

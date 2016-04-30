@@ -23,7 +23,7 @@ export default function handleRender(req, res) {
 
   res.send(
     '<!doctype html>\n' +
-    React.renderToString(
+    renderToString(
       <Html assets={webpack_isomorphic_tools.assets()}
             component={component}
             initialState={finalState}/>
