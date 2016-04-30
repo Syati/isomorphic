@@ -4,9 +4,32 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app/server/index.js",
+    "postinstall": "npm run build",
+    "build": "better-npm-run build",
+    "start": "better-npm-run start:dev",
+    "start-prod": "better-npm-run start:prod",
     "deploy": "NODE_ENV=production webpack && NODE_ENV=production npm start",
     "clean": "rm -rf app/public"
+  },
+  "betterScripts": {
+    "start:dev": {
+      "command": "node ./app/server/index.js",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    "start:prod": {
+      "command": "node ./app/server/index.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "build": {
+      "command": "webpack --verbose --colors --display-error-details",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +45,7 @@
     "redux-router": "^1.0.0-beta8"
   },
   "devDependencies": {
+    "better-npm-run": "0.0.8",
     "autoprefixer-loader": "^3.2.0",
     "babel-core": "^6.7.4",
     "babel-loader": "^6.2.4",
@@ -33,6 +57,7 @@
     "babel-register": "^6.7.2",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
     "less": "^2.6.1",
     "less-loader": "^2.2.3",
     "style-loader": "^0.13.1",
