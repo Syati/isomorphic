@@ -21,7 +21,7 @@ export default class Html extends Component {
                   rel="stylesheet" type="text/css"/>)}
 
           {/* resolves the initial style flash (flicker) on page load in development mode */}
-          { Object.keys(assets.styles).length == 0 ? null : null }
+          { Object.keys(assets.styles).length === 0 ? <style dangerouslySetInnerHTML={{__html: require('../common/containers/App/App.less')._style}}/> : null }
         </head>
         <body>
           <div id="app" dangerouslySetInnerHTML={{__html: component}}></div>
