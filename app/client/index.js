@@ -7,8 +7,9 @@ import { ReduxRouter } from 'redux-router';
 
 import configureStore from '../common/store/configureStore';
 
+const initialState = window.__INITIAL_STATE__;
+const store = configureStore(initialState);
 const rootElement = document.getElementById('app');
-const store = configureStore(window.__initialState);
 
 render(
   <Provider store={store}>
