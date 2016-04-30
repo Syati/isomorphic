@@ -1,13 +1,11 @@
 import React from 'react';
 
-if ( process.env.BROWSER ) {
-  require('../style/Header.less');
-}
 
 class Header extends React.Component {
   render() {
+    const styles = require('./Header.less');
     return (
-        <div className="header">
+        <div className={styles.header}>
           isomorphic app sample
         </div>
     );

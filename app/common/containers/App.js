@@ -1,12 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 
-if ( process.env.BROWSER ) {
-  require('../style/App.less');
-}
 
 class App extends React.Component {
   render() {
