@@ -13,7 +13,7 @@ class App extends React.Component {
     return (
       <div>
         <Header />
-        <main className="main">
+        <main className={styles.main}>
           { children }
         </main>
         <Footer />
